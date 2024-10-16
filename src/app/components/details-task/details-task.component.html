@@ -10,7 +10,7 @@
             </div>
             <div class="body-task mb-4">
                 <span class="task-label">Description</span>
-                <h2 *ngIf="!isEdit" class="task-font mt-4">{{taskDetails.description}}</h2>
+                <p *ngIf="!isEdit" class="task-font mt-4">{{taskDetails.description}}</p>
                 <textarea *ngIf="isEdit" type="text" rows="5" maxlength="500" minlength="2"
                     class="form-control shadow-none" [(ngModel)]="taskDetails.description" [ngModelOptions]="{ standalone: true }">{{taskDetails.description}}</textarea>
             </div>
