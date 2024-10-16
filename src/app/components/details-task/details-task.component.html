@@ -1,0 +1,52 @@
+<div class="container task">
+    <div class="task-details">
+            <div class="header-task mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="task-label">Title</span>
+                    <span class="ms-2 text-primary fw-bold">{{taskDetails.status}}</span>
+                </div>
+                <h2 *ngIf="!isEdit" class="task-font">{{taskDetails.title}}</h2>
+                <input *ngIf="isEdit" type="text" class="form-control shadow-none" [(ngModel)]="taskDetails.title" [ngModelOptions]="{ standalone: true }" maxlength="60" [value]="taskDetails.title">
+            </div>
+            <div class="body-task mb-4">
+                <span class="task-label">Description</span>
+                <h2 *ngIf="!isEdit" class="task-font mt-4">{{taskDetails.description}}</h2>
+                <textarea *ngIf="isEdit" type="text" rows="5" maxlength="500" minlength="2"
+                    class="form-control shadow-none" [(ngModel)]="taskDetails.description" [ngModelOptions]="{ standalone: true }">{{taskDetails.description}}</textarea>
+            </div>
+        <div class="footer-task d-flex flex-column">
+            <p class="m-0 text-muted fw-bold">CreatedAt: {{taskDetails.createdAt| date:'short'}}</p>
+            <p class="text-danger m-0">{{messageErorr}}</p>
+            <div class="d-flex mt-4">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn text-danger fw-bold border-0 p-0" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Delete</button>
+                <div class="control-task ms-auto">
+                    <button *ngIf="isEdit" (click)="cancle()" class="btn fw-bold ms-1 border-0">Cancel</button>
+                    <button *ngIf="!isEdit" (click)="edit()" class="btn text-primary fw-bold ms-1 border-0">Update</button>
+                    <button *ngIf="isEdit" (click)="updateTask(taskDetails._id)"  class="btn text-primary fw-bold ms-1 border-0">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog d-flex align-items-center vh-100">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Do you want to delete the task?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fw-medium">
+                This will delete <strong>{{taskDetails.title}}</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button (click)="deleteTask(taskDetails._id)" type="button" class="btn btn-danger" data-bs-dismiss="modal" >Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

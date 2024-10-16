@@ -1,0 +1,18 @@
+<div class="card-task">
+    <div class="header-task mb-2">
+        <h4 class="title">{{task.title}}</h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span class="text-muted">{{task.createdAt| date: 'short'}}</span>
+                <span class="ms-2 text-primary fw-bold">{{task.status}}</span>
+            </div>
+            <button (click)="markCompleted(task)" class="btn btn-completed">Mark Completed</button>
+        </div>
+    </div>
+    <div class="body-task">
+        <p class="description">{{task.description}}</p>
+    </div>
+    <div class="body-footer">
+        <a [routerLink]="['/tasks',task._id]">view</a>
+    </div>
+</div>

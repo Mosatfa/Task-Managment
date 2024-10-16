@@ -1,0 +1,29 @@
+.app-task {
+    height: 100%;
+    padding: 70px 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F4F5;
+    .title-manage-task {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0px;
+    }
+
+    .input-form {
+        margin-bottom: 16px;
+        textarea,
+        input,
+        select {
+            box-shadow: none;
+            resize: none;
+        }
+    }
+
+}
+
+@media (max-width: 991px) {
+    .app-task{
+        width: 100% !important;
+    }
+}

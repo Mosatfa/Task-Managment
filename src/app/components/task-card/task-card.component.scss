@@ -1,0 +1,49 @@
+.card-task {
+    background-color: #fff;
+    padding: 16px;
+    margin-bottom: 8px;
+
+    .header-task {
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+            margin: 0;
+        }
+
+        .btn-completed {
+            color: #0d6efd;
+            background-color: #fff;
+            border: 1px solid #acb1b3;
+            font-size: 12px;
+            font-weight: bold;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .body-task {
+        width: 80%;
+        .description {
+            color: #000;
+            font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .body-footer {
+        a {
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+    }
+}
+
+

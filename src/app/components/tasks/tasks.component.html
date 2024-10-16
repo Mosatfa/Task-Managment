@@ -1,0 +1,77 @@
+<div class="app-task w-75 m-auto">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="title-manage-task">Manage Tasks</h2>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-plus"></i>
+            Add Task
+        </button>
+    </div>
+
+    <!-- Display Tasks -->
+    @for (task of tasks; track $index) {
+    <app-task-card [task]="task"></app-task-card>
+    }
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog d-flex align-items-center vh-100 m-auto">
+            <div class="modal-content">
+                <form (ngSubmit)="createTask()" [formGroup]="formData">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-form">
+                            <label for="title">Title</label>
+                            <input formControlName="title" type="text" class="form-control" id="title">
+                            <!-- validtion Error -->
+                            @if (formData.get('title')?.errors &&( formData.get('title')?.touched ||
+                            formData.get('title')?.dirty )) {
+                            <div class="ms-2">
+                                <p class="text-danger" *ngIf="formData.get('title')?.getError('required')">Title is
+                                    required
+                                </p>
+                                <p class="text-danger"
+                                    *ngIf="formData.get('title')?.hasError('minlength') || formData.get('title')?.hasError('maxlength')">
+                                    Description must be at least 2 characters long and cannot exceed 60 characters.
+                                </p>
+                            </div>
+                            }
+                        </div>
+                        <div class="input-form">
+                            <label for="description">Description</label>
+                            <textarea formControlName="description" class="form-control" id="description"
+                                rows="3"></textarea>
+                            <!-- validtion Error -->
+                            @if (formData.get('description')?.errors &&( formData.get('description')?.touched ||
+                            formData.get('description')?.dirty )) {
+                            <div class="ms-2">
+                                <p class="text-danger" *ngIf="formData.get('description')?.getError('required')">Description is
+                                    required
+                                </p>
+                                <p class="text-danger"
+                                    *ngIf="formData.get('description')?.hasError('minlength') || formData.get('description')?.hasError('maxlength')">
+                                    Description must be at least 2 characters long and cannot exceed 500 characters.
+                                </p>
+                            </div>
+                            }
+                        </div>
+                        <div class="input-form">
+                            <label for="status">Status</label>
+                            <select  value="Pending" id="status" class="form-control" formControlName="status">
+                                <option value="Pending">Pending</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer border-0 p-0">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Add
+                                Task</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

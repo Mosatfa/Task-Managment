@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+// regular style toast
+@import 'ngx-toastr/toastr';
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #F2F4F5;
+}
+
+.form-group .form-control {
+    box-shadow: none;
+}
+
+.register-form,
+.login-form {
+    width: 30%;
+}
+
+@media (max-width: 991px) {
+
+    .register-form,
+    .login-form {
+        width: 100%;
+    }
+}
+
+
+.toast-top-right {
+    padding-top: 64px; /* Adjust the top padding */
+}
